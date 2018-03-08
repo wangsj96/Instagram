@@ -14,13 +14,6 @@ class AuthenticatedViewController: UIViewController {
         super.viewDidLoad()
         print("loaded correctly")
         // Do any additional setup after loading the view.
-        let titleLabel = UILabel.init()
-        titleLabel.text = "Instagram"
-        titleLabel.font = UIFont.init(name: "Academy Engraved LET", size: 24)
-        titleLabel.shadowColor = UIColor.black
-        titleLabel.sizeToFit()
-        titleLabel.textAlignment = .center
-        self.navigationItem.titleView = titleLabel
     }
 
     override func didReceiveMemoryWarning() {

@@ -63,7 +63,7 @@
             </objects>
             <point key="canvasLocation" x="858" y="161"/>
         </scene>
-        <!--Authenticated View Controller-->
+        <!--Instagram-->
         <scene sceneID="HPQ-Z7-vKf">
             <objects>
                 <viewController storyboardIdentifier="authViewController" id="SyX-CJ-AUp" customClass="AuthenticatedViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -76,7 +76,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="147" id="LBk-hx-Koq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotoFeed" rowHeight="147" id="LBk-hx-Koq">
                                         <rect key="frame" x="0.0" y="28" width="375" height="147"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LBk-hx-Koq" id="PqO-rR-kik">
@@ -102,16 +102,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="sae-oq-vqX"/>
                     </view>
-                    <navigationItem key="navigationItem" id="c5E-36-8do">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="fOx-qb-XSW">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="our-Py-MQm">
-                                <rect key="frame" x="16" y="7" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logOut:" destination="SyX-CJ-AUp" eventType="touchUpInside" id="V3Y-pV-Noc"/>
-                                </connections>
-                            </button>
+                    <navigationItem key="navigationItem" title="Instagram" id="c5E-36-8do">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Fun-Xx-96D">
+                            <connections>
+                                <action selector="logOut:" destination="SyX-CJ-AUp" id="uLm-Ij-7dO"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" style="done" id="NUm-i8-8Tj">
+                            <connections>
+                                <segue destination="KLW-dv-jmf" kind="presentation" identifier="CreateFeed" id="m7H-QK-3fa"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -119,14 +119,72 @@
             </objects>
             <point key="canvasLocation" x="2753" y="161"/>
         </scene>
+        <!--Create Post View Controller-->
+        <scene sceneID="US3-Ea-kdq">
+            <objects>
+                <viewController id="TxD-Yl-45k" customClass="CreatePostViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ziV-Vg-VWr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your caption here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qhd-0X-Whe">
+                                <rect key="frame" x="39" y="358" width="296" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAK-iu-Xbt">
+                                <rect key="frame" x="59" y="88" width="256" height="256"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="256" id="cfB-Xb-MXP"/>
+                                    <constraint firstAttribute="height" constant="256" id="fIQ-7C-GMp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="tab to select a photo" backgroundImage="image_placeholder">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="imageBtnOnTap:" destination="TxD-Yl-45k" eventType="touchUpInside" id="ndO-gT-aAV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tAK-iu-Xbt" firstAttribute="top" secondItem="00e-c7-Ios" secondAttribute="top" constant="24" id="3dY-Jt-pCx"/>
+                            <constraint firstItem="tAK-iu-Xbt" firstAttribute="centerX" secondItem="ziV-Vg-VWr" secondAttribute="centerX" id="DMl-z3-Opz"/>
+                            <constraint firstItem="qhd-0X-Whe" firstAttribute="leading" secondItem="tAK-iu-Xbt" secondAttribute="leading" constant="-20" id="XWH-iP-b30"/>
+                            <constraint firstItem="qhd-0X-Whe" firstAttribute="top" secondItem="tAK-iu-Xbt" secondAttribute="bottom" constant="14" id="sY3-gj-GxU"/>
+                            <constraint firstItem="qhd-0X-Whe" firstAttribute="trailing" secondItem="tAK-iu-Xbt" secondAttribute="trailing" constant="20" id="xjL-fG-lga"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="00e-c7-Ios"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HEu-Dx-jFI">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="4MX-WG-DdU">
+                            <connections>
+                                <segue destination="9PL-yx-4f1" kind="presentation" identifier="CancelPost" modalTransitionStyle="crossDissolve" id="LFh-Ad-59g"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="bE0-ZD-H2S"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageBtn" destination="tAK-iu-Xbt" id="VbG-S1-gYx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3On-SB-JPl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4792.8000000000002" y="160.56971514242881"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="AOO-Uu-FKK">
             <objects>
                 <navigationController storyboardIdentifier="AuthenticatedViewController" automaticallyAdjustsScrollViewInsets="NO" id="9PL-yx-4f1" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dkj-2l-mgJ">
+                    <navigationBar key="navigationBar" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" id="dkj-2l-mgJ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="20"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -137,5 +195,30 @@
             </objects>
             <point key="canvasLocation" x="1772" y="161"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JdA-AL-tma">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KLW-dv-jmf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ssj-yn-Kpd">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="TxD-Yl-45k" kind="relationship" relationship="rootViewController" id="7ow-ut-ri5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="73g-Ac-FOx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3822.4000000000001" y="160.11994002998503"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="image_placeholder" width="375" height="375"/>
+        <image name="insta_camera_btn" width="25" height="25"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="LFh-Ad-59g"/>
+    </inferredMetricsTieBreakers>
 </document>
