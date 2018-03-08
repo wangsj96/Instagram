@@ -128,7 +128,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your caption here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qhd-0X-Whe">
-                                <rect key="frame" x="39" y="358" width="296" height="30"/>
+                                <rect key="frame" x="40" y="358" width="295" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -136,8 +136,8 @@
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAK-iu-Xbt">
                                 <rect key="frame" x="59" y="88" width="256" height="256"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="256" id="cfB-Xb-MXP"/>
-                                    <constraint firstAttribute="height" constant="256" id="fIQ-7C-GMp"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="256" id="cfB-Xb-MXP"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="256" id="fIQ-7C-GMp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="tab to select a photo" backgroundImage="image_placeholder">
@@ -147,14 +147,20 @@
                                     <action selector="imageBtnOnTap:" destination="TxD-Yl-45k" eventType="touchUpInside" id="ndO-gT-aAV"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="oho-h0-vED">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tAK-iu-Xbt" firstAttribute="top" secondItem="00e-c7-Ios" secondAttribute="top" constant="24" id="3dY-Jt-pCx"/>
                             <constraint firstItem="tAK-iu-Xbt" firstAttribute="centerX" secondItem="ziV-Vg-VWr" secondAttribute="centerX" id="DMl-z3-Opz"/>
-                            <constraint firstItem="qhd-0X-Whe" firstAttribute="leading" secondItem="tAK-iu-Xbt" secondAttribute="leading" constant="-20" id="XWH-iP-b30"/>
-                            <constraint firstItem="qhd-0X-Whe" firstAttribute="top" secondItem="tAK-iu-Xbt" secondAttribute="bottom" constant="14" id="sY3-gj-GxU"/>
-                            <constraint firstItem="qhd-0X-Whe" firstAttribute="trailing" secondItem="tAK-iu-Xbt" secondAttribute="trailing" constant="20" id="xjL-fG-lga"/>
+                            <constraint firstItem="qhd-0X-Whe" firstAttribute="top" secondItem="tAK-iu-Xbt" secondAttribute="bottom" constant="14" id="ExL-hD-FBP"/>
+                            <constraint firstItem="qhd-0X-Whe" firstAttribute="leading" secondItem="00e-c7-Ios" secondAttribute="leading" constant="40" id="GoC-Wd-cru"/>
+                            <constraint firstItem="00e-c7-Ios" firstAttribute="trailing" secondItem="qhd-0X-Whe" secondAttribute="trailing" constant="40" id="bEc-d5-yHx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="00e-c7-Ios"/>
                     </view>
@@ -164,9 +170,15 @@
                                 <segue destination="9PL-yx-4f1" kind="presentation" identifier="CancelPost" modalTransitionStyle="crossDissolve" id="LFh-Ad-59g"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Share" id="bE0-ZD-H2S"/>
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="bE0-ZD-H2S">
+                            <connections>
+                                <action selector="postOnTap:" destination="TxD-Yl-45k" id="9Zg-kh-BJI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="oho-h0-vED" id="uWm-ZM-u2g"/>
+                        <outlet property="captionField" destination="qhd-0X-Whe" id="Oaq-Hb-SfY"/>
                         <outlet property="imageBtn" destination="tAK-iu-Xbt" id="VbG-S1-gYx"/>
                     </connections>
                 </viewController>

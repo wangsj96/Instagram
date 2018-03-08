@@ -11,9 +11,13 @@ import UIKit
 class CreatePostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imageBtn: UIButton!
+    @IBOutlet weak var captionField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        activityIndicator.transform = transform
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +60,17 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage!
+    }
+    
+    @IBAction func postOnTap(_ sender: Any) {
+        self.activityIndicator.startAnimating()
+        Post.postUserImage(image: imageBtn.currentImage, withCaption: captionField.text) { (success: Bool, error: Error?) in
+            
+            if success {
+                self.activityIndicator.stopAnimating()
+                print("uploaded!!!")
+            }
+        }
     }
     
     /*
