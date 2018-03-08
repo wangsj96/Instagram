@@ -17,17 +17,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // Initialize Parse
-        // Set applicationId and server based on the values in the Heroku settings.
-        // clientKey is not used on Parse open source unless explicitly configured
         Parse.initialize(
             with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
                 configuration.applicationId = "Instagram"
-                configuration.clientKey = "sfaldisfjl(912938adsfklsd"  // set to nil assuming you have not set clientKey
+                configuration.clientKey = "sfaldisfjl(912938adsfklsd"
                 configuration.server = "https://stark-plateau-53316.herokuapp.com/parse"
             })
         )
+        if PFUser.current() != nil {
+            print("logged")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let authenticatedViewController = storyboard.instantiateViewController(withIdentifier: "AuthenticatedViewController")
+            self.window?.rootViewController = authenticatedViewController
+        }
+        else {
+            print("no current user")
+        }
+
+        NotificationCenter.default.addObserver(forName: Notification.Name("didLogout"), object: nil, queue: OperationQueue.main) { (Notification) in
+            print("Logout notification received")
+            self.logOut()
+        }
         return true
+    }
+
+    func logOut() {
+        PFUser.logOutInBackground(block: { (error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("Successful loggout")
+                // Load and show the login view controller
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+                self.window?.rootViewController = loginViewController
+            }
+        })
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
