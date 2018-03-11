@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import RSKPlaceholderTextView
 
 class CreatePostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imageBtn: UIButton!
-    @IBOutlet weak var captionField: UITextField!
+    @IBOutlet weak var captionField: RSKPlaceholderTextView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var backBtn: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         activityIndicator.transform = transform
+        activityIndicator.layer.cornerRadius = 10
+        captionField.backgroundColor = .white
+        captionField.placeholderColor = .black
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,10 +74,37 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             
             if success {
                 self.activityIndicator.stopAnimating()
+                UIViewPropertyAnimator(duration: 1, curve: .easeIn, animations: {
+                    self.messageLabel.alpha = 1
+                }).startAnimation()
+                self.backBtn.title = "Back"
                 print("uploaded!!!")
+            }
+            else {
+                self.activityIndicator.stopAnimating()
+                print(error?.localizedDescription)
             }
         }
     }
+    
+    func fadeViewInThenOut(view : UIView, delay: TimeInterval) {
+        print("im here")
+        let animationDuration = 0.25
+        
+        // Fade in the view
+        UIView.animate(withDuration: animationDuration, animations: { () -> Void in
+            view.alpha = 1
+        }) { (Bool) -> Void in
+            
+            // After the animation completes, fade out the view after a delay
+            
+            UIView.animate(withDuration: animationDuration, delay: delay, options: [.curveEaseOut], animations: { () -> Void in
+                view.alpha = 0
+            }, completion: nil)
+        }
+    }
+    
+    
     
     /*
     // MARK: - Navigation

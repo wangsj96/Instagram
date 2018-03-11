@@ -19,6 +19,8 @@
 		A1EE165B204E8534006832FC /* AuthenticatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE165A204E8534006832FC /* AuthenticatedViewController.swift */; };
 		A1EE165D20513326006832FC /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE165C20513326006832FC /* CreatePostViewController.swift */; };
 		A1EE165F205168EE006832FC /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE165E205168EE006832FC /* Post.swift */; };
+		A1EE166120538975006832FC /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE166020538975006832FC /* PostCell.swift */; };
+		A1EE166320554CC5006832FC /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EE166220554CC4006832FC /* PostDetailViewController.swift */; };
 		BFCB522835060A8CDF10C6BD /* Pods_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ADC4872C7DC931E72BEC5DC /* Pods_Instagram.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,8 @@
 		A1EE165A204E8534006832FC /* AuthenticatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedViewController.swift; sourceTree = "<group>"; };
 		A1EE165C20513326006832FC /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		A1EE165E205168EE006832FC /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		A1EE166020538975006832FC /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		A1EE166220554CC4006832FC /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		FFB0803B0D3E506F70C988AC /* Pods_InstagramUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -139,6 +143,8 @@
 				A1EE165A204E8534006832FC /* AuthenticatedViewController.swift */,
 				A1EE165C20513326006832FC /* CreatePostViewController.swift */,
 				A1EE165E205168EE006832FC /* Post.swift */,
+				A1EE166020538975006832FC /* PostCell.swift */,
+				A1EE166220554CC4006832FC /* PostDetailViewController.swift */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -340,11 +346,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Instagram/Pods-Instagram-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+				"${BUILT_PRODUCTS_DIR}/RSKPlaceholderTextView/RSKPlaceholderTextView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSKPlaceholderTextView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -470,10 +478,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1EE165B204E8534006832FC /* AuthenticatedViewController.swift in Sources */,
+				A1EE166320554CC5006832FC /* PostDetailViewController.swift in Sources */,
 				A1EE1659204E2900006832FC /* LoginViewController.swift in Sources */,
 				A1EE165D20513326006832FC /* CreatePostViewController.swift in Sources */,
 				A1EE162B204D84D0006832FC /* AppDelegate.swift in Sources */,
 				A1EE165F205168EE006832FC /* Post.swift in Sources */,
+				A1EE166120538975006832FC /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

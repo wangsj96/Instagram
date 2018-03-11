@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if PFUser.current() != nil {
             print("logged")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let authenticatedViewController = storyboard.instantiateViewController(withIdentifier: "AuthenticatedViewController")
+            let authenticatedViewController = storyboard.instantiateViewController(withIdentifier: "authViewController")
             self.window?.rootViewController = authenticatedViewController
         }
         else {

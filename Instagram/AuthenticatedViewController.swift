@@ -7,23 +7,79 @@
 //
 
 import UIKit
+import Parse
 
-class AuthenticatedViewController: UIViewController {
+class AuthenticatedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var posts: [PFObject]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("loaded correctly")
+        tableView.dataSource = self
+        tableView.delegate = self
+        fetchPosts()
         // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func logOut(_ sender: Any) {
         print("logout clicked")
         NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
+    }
+    
+    func fetchPosts() {
+        // construct PFQuery
+        let query = Post.query()
+        query?.order(byDescending: "createdAt")
+        query?.includeKey("author")
+        query?.includeKey("_created_at")
+        query?.limit = 20
+        
+        // fetch data asynchronously
+        query?.findObjectsInBackground(block: { (posts:[PFObject]?, error: Error?) in
+            if let posts = posts {
+                self.posts = posts
+//                print(posts)
+                self.tableView.reloadData()
+            }
+            else {
+                print(error?.localizedDescription)
+            }
+        })
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoFeed", for: indexPath) as! PostCell
+        let post = posts[indexPath.row]
+        cell.captionLabel.text = (post["caption"] as! String)
+        let imageFile = post["media"] as! PFFile
+        let imageData = try? imageFile.getData()
+        cell.postImageView.image = UIImage(data: imageData!)
+        cell.selectionStyle = .none
+        return cell;
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UITableViewCell
+        if let indexPath = tableView.indexPath(for: cell) {
+            let post = posts[indexPath.row]
+            let detailViewController = segue.destination as! PostDetailViewController
+            detailViewController.post = post
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
 
