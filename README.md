@@ -1,9 +1,9 @@
 # Instagram
-# Project 4 - *Name of App Here*
+# Project 4 - Instagram
 
-**Name of your app** is a photo sharing app using Parse as its backend.
+Instagram is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: 15 hours spent in total
 
 ## User Stories
 
@@ -66,7 +66,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2018] [Sijin Wang]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
