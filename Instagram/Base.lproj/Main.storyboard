@@ -248,20 +248,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sVN-u4-5pB">
-                                <rect key="frame" x="12" y="84" width="351" height="285"/>
+                                <rect key="frame" x="12" y="40" width="351" height="285"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="285" id="9DV-zQ-XRo"/>
                                     <constraint firstAttribute="width" constant="351" id="s8o-eC-thT"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is my caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tah-8M-ANe">
-                                <rect key="frame" x="12" y="381" width="138" height="21"/>
+                                <rect key="frame" x="12" y="337" width="138" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted on: Sun, Aug 18, 9:08PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuQ-Hj-pFW">
-                                <rect key="frame" x="12" y="414" width="246.5" height="21"/>
+                                <rect key="frame" x="12" y="370" width="246.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -316,6 +316,7 @@
         <image name="insta_camera_btn" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="m7H-QK-3fa"/>
         <segue reference="zhm-Pd-nn9"/>
     </inferredMetricsTieBreakers>
 </document>

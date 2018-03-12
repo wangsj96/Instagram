@@ -14,13 +14,21 @@ class AuthenticatedViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var tableView: UITableView!
     
     var posts: [PFObject]! = []
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(AuthenticatedViewController.didPullToRefresh(_:)), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
         fetchPosts()
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        fetchPosts()
     }
     
     @IBAction func logOut(_ sender: Any) {
@@ -42,6 +50,7 @@ class AuthenticatedViewController: UIViewController, UITableViewDelegate, UITabl
                 self.posts = posts
 //                print(posts)
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
             else {
                 print(error?.localizedDescription)
