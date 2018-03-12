@@ -65,11 +65,13 @@ class AuthenticatedViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UITableViewCell
-        if let indexPath = tableView.indexPath(for: cell) {
-            let post = posts[indexPath.row]
-            let detailViewController = segue.destination as! PostDetailViewController
-            detailViewController.post = post
+        if segue.identifier == "showDetail" {
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell) {
+                let post = posts[indexPath.row]
+                let detailViewController = segue.destination as! PostDetailViewController
+                detailViewController.post = post
+            }
         }
     }
     
